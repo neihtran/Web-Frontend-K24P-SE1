@@ -189,6 +189,8 @@ body {
    Albums list (Exercise 2)
    ========================================= */
 
+/* ===== Albums list (Exercise 2) ===== */
+
 .albums-page {
   min-height: 100vh;
   background: #e5edf7;
@@ -221,9 +223,12 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
+  align-items: stretch;          /* các cột cao bằng nhau */
 }
 
 .album-column {
+  display: flex;
+  flex-direction: column;        /* tiêu đề + list chiếm full chiều cao cột */
   border-right: 1px solid #d1d5db;
   padding-right: 16px;
 }
@@ -236,29 +241,60 @@ body {
 .album-title {
   font-size: 18px;
   margin-bottom: 16px;
-  color: #111827; /* tiêu đề cột đậm hơn */
+  color: #111827;
   font-weight: 600;
 }
 
 .album-products {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
+/* MỌI CARD CÙNG CHIỀU CAO */
 .product-card {
   display: flex;
+  align-items: center;
   gap: 10px;
   padding: 10px;
   border-radius: 12px;
   border: 1px solid #e5e7eb;
-  background: #ffffff; /* trắng hẳn cho nổi chữ */
+  background: #ffffff;
+
+  height: 130px;          /* chiều cao cố định cho tất cả card */
+  /* bạn có thể chỉnh 120 / 140 / 150 tuỳ ý */
 }
+
+.product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;   /* tên + mô tả + giá phân bố đều, giá nằm dưới */
+}
+
+/* Giới hạn số dòng, tránh tràn chữ khi card thấp */
+.product-name,
+.product-desc {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.product-name {
+  -webkit-line-clamp: 2;   /* tối đa 2 dòng */
+}
+
+.product-desc {
+  -webkit-line-clamp: 2;   /* tối đa 2 dòng */
+}
+
 
 .product-rating {
   font-size: 13px;
   margin-bottom: 4px;
-  color: #f59e0b; /* sao vàng */
+  color: #f59e0b;
 }
 
 .rating-count {
@@ -275,6 +311,9 @@ body {
 
 .product-info {
   flex: 1;
+  display: flex;                  /* đẩy giá xuống cuối card */
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .product-name {
@@ -287,7 +326,7 @@ body {
 .product-desc {
   margin: 0 0 4px;
   font-size: 12px;
-  color: #4b5563; /* đậm hơn trước */
+  color: #4b5563;
 }
 
 .product-price {

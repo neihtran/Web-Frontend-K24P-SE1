@@ -1,5 +1,5 @@
-import CategorySection from "@/components//albums/CategorySection";
-import { Product } from "@/components/albums/ProductCard";
+import CategorySection from "@/components/albums/category-section";
+import { Product } from "@/components/albums/product-card";
 
 type Category = {
   name: string;

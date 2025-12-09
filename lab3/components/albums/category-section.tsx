@@ -1,5 +1,5 @@
 import React from "react";
-import ProductCard, { Product } from "./ProductCard";
+import ProductCard, { Product } from "./product-card";
 
 type CategorySectionProps = {
   title: string;

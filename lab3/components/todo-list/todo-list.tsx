@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, ChangeEvent, KeyboardEvent } from "react";
-import TodoItem, { Todo } from "./TodoItem";
+import TodoItem, { Todo } from "./todo-item";
 
 export default function TodoList() {
   const [todos, setTodos] = useState<Todo[]>([]);
