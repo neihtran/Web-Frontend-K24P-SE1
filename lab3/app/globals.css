@@ -1,0 +1,298 @@
+@import "tailwindcss";
+
+/* ===== Base theme (Next.js default) ===== */
+
+:root {
+  --background: #f1f5f9; /* nền xám nhạt dễ nhìn */
+  --foreground: #111827; /* chữ đen đậm */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #020617;
+    --foreground: #e5e7eb;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================================
+   Todo List (Exercise 1)
+   ========================================= */
+
+.todo-app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e5edf7;
+  padding: 40px 16px;
+}
+
+.todo-card {
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.22);
+  padding: 24px 24px 18px;
+}
+
+.todo-title {
+  font-size: 24px;
+  margin: 0 0 16px;
+  text-align: left;
+  color: #111827; /* đậm hơn */
+  font-weight: 600;
+}
+
+.todo-input-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.todo-input {
+  flex: 1;
+  border-radius: 999px;
+  border: 1px solid #94a3b8;
+  padding: 10px 14px;
+  outline: none;
+  font-size: 14px;
+  color: #0f172a;
+  background: #ffffff;
+}
+
+.todo-input::placeholder {
+  color: #9ca3af;
+}
+
+.todo-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+}
+
+.todo-add-btn {
+  width: 42px;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+
+.todo-add-btn:hover {
+  background: #1d4ed8;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 12px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 4px;
+  gap: 8px;
+}
+
+.todo-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.todo-text {
+  font-size: 15px;
+  color: #111827; /* chữ đậm */
+}
+
+.todo-text.completed {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.todo-delete-btn {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: color 0.15s ease;
+}
+
+.todo-delete-btn:hover {
+  color: #ef4444;
+}
+
+.todo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #374151; /* sẫm hơn */
+  border-top: 1px solid #e5e7eb;
+  padding-top: 10px;
+}
+
+.todo-clear-btn {
+  border-radius: 999px;
+  padding: 6px 14px;
+  border: none;
+  background: #f97316;
+  color: #ffffff;
+  font-size: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.todo-clear-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.todo-clear-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* =========================================
+   Albums list (Exercise 2)
+   ========================================= */
+
+.albums-page {
+  min-height: 100vh;
+  background: #e5edf7;
+  padding: 40px 16px;
+}
+
+.albums-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px 24px 30px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+}
+
+.albums-header h1 {
+  margin: 0 0 4px;
+  color: #111827;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.albums-header p {
+  margin: 0 0 20px;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.albums-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.album-column {
+  border-right: 1px solid #d1d5db;
+  padding-right: 16px;
+}
+
+.album-column:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.album-title {
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #111827; /* tiêu đề cột đậm hơn */
+  font-weight: 600;
+}
+
+.album-products {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.product-card {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff; /* trắng hẳn cho nổi chữ */
+}
+
+.product-rating {
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #f59e0b; /* sao vàng */
+}
+
+.rating-count {
+  margin-left: 4px;
+  color: #6b7280;
+}
+
+.product-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-name {
+  font-size: 14px;
+  margin: 0 0 2px;
+  color: #111827;
+  font-weight: 600;
+}
+
+.product-desc {
+  margin: 0 0 4px;
+  font-size: 12px;
+  color: #4b5563; /* đậm hơn trước */
+}
+
+.product-price {
+  margin: 0;
+  font-weight: 700;
+  font-size: 13px;
+  color: #111827;
+}
