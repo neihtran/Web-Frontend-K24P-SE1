@@ -1,6 +1,6 @@
 "use client";
 
-import { useCounter } from "@/app/hooks/user-counter";
+import { useCounter } from "@/hooks/user-counter";
 import { Button } from "../ui/button";
 
 export default function CounterTab() {
