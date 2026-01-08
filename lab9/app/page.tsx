@@ -1,35 +1,39 @@
 "use client";
-
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
-
-import Exercise1 from "@/components/simple-contact/form";
-import Exercise2 from "@/components/form-validation/form";
-import ThemeToggle from "@/components/theme-toggle/toggle";
-
+import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import ScreenA from "@/components/screen-a";
+import ScreenB from "@/components/screen-b";
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState("a");
+
   return (
-    <div className="max-w-4xl mx-auto mt-10">
-      <Tabs defaultValue="page1" className="w-full">
-        <TabsList className="grid grid-cols-5 w-full">
-          <TabsTrigger value="page1">Simple Contact</TabsTrigger>
-          <TabsTrigger value="page2">Form Validation</TabsTrigger>
-        </TabsList>
+    <main className="flex min-h-screen flex-col items-center justify-center p-6 bg-background text-foreground transition-colors duration-300">
+      <div className="w-full max-w-md space-y-6">
+        <div className="text-center space-y-2">
+          <h1 className="text-3xl font-extrabold tracking-tight">
+            Lab 9: Redux Auth
+          </h1>
+          <p className="text-muted-foreground text-sm">
+            Quản lý Theme và Auth tập trung
+          </p>
+        </div>
 
-        <TabsContent value="page1">
-          <Exercise1 />
-        </TabsContent>
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-2 mb-4">
+            <TabsTrigger value="a">Đăng nhập</TabsTrigger>
+            <TabsTrigger value="b">Hồ sơ</TabsTrigger>
+          </TabsList>
 
-        <TabsContent value="page2">
-          <Exercise2 />
-        </TabsContent>
-      </Tabs>
-      <ThemeToggle />
-    </div>
+          <TabsContent value="a">
+            <ScreenA setActiveTab={setActiveTab} />
+          </TabsContent>
+
+          <TabsContent value="b">
+            <ScreenB setActiveTab={setActiveTab} />
+          </TabsContent>
+        </Tabs>
+      </div>
+    </main>
   );
 }
